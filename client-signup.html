@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Client Account | AJP PIXELS</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="services.html">Services</a>
+            <a href="events.html">Events</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+
+    <section class="client-login-hero">
+
+        <div class="client-login-container">
+
+            <p class="client-login-label">
+                AJP PIXELS CLIENT AREA
+            </p>
+
+            <h1>Create Your Client Account</h1>
+
+            <p>
+                Create an account to securely access your booking,
+                payments, documents, and private photography gallery.
+            </p>
+
+
+            <form id="signup-form">
+
+                <div class="login-field">
+                    <label for="signup-name">Full Name</label>
+
+                    <input
+                        type="text"
+                        id="signup-name"
+                        placeholder="Enter your full name"
+                        required
+                    >
+                </div>
+
+
+                <div class="login-field">
+                    <label for="signup-email">Email Address</label>
+
+                    <input
+                        type="email"
+                        id="signup-email"
+                        placeholder="Enter your email address"
+                        required
+                    >
+                </div>
+
+
+                <div class="login-field">
+                    <label for="signup-password">Password</label>
+
+                    <input
+                        type="password"
+                        id="signup-password"
+                        placeholder="Create a password"
+                        minlength="8"
+                        required
+                    >
+                </div>
+
+
+                <div class="login-field">
+                    <label for="signup-confirm-password">
+                        Confirm Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="signup-confirm-password"
+                        placeholder="Confirm your password"
+                        minlength="8"
+                        required
+                    >
+                </div>
+
+
+                <button type="submit" class="login-button">
+                    Create Account
+                </button>
+
+            </form>
+
+
+            <div id="signup-message" class="login-message"></div>
+
+
+            <div class="login-links">
+
+                <a href="client-login.html">
+                    Already have an account? Sign In
+                </a>
+
+            </div>
+
+
+            <div class="login-back">
+
+                <a href="index.html">
+                    ← Back to AJP PIXELS
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script>
+
+        const SUPABASE_URL = "https://dqommzsokiqvopldkvrf.supabase.co";
+        const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_hnKFrgGzRCLgYVnXmo9yRg_ACmhlHfX";
+
+
+        const supabaseClient = supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_PUBLISHABLE_KEY
+        );
+
+
+        const signupForm =
+            document.getElementById("signup-form");
+
+        const signupMessage =
+            document.getElementById("signup-message");
+
+
+        signupForm.addEventListener("submit", async function(event) {
+
+            event.preventDefault();
+
+
+            const name =
+                document.getElementById("signup-name").value.trim();
+
+            const email =
+                document.getElementById("signup-email").value.trim();
+
+            const password =
+                document.getElementById("signup-password").value;
+
+            const confirmPassword =
+                document.getElementById("signup-confirm-password").value;
+
+
+            if (password !== confirmPassword) {
+
+                signupMessage.textContent =
+                    "The passwords do not match.";
+
+                signupMessage.style.display = "block";
+
+                return;
+            }
+
+
+            signupMessage.textContent =
+                "Creating your account...";
+
+            signupMessage.style.display = "block";
+
+
+            const { data, error } =
+                await supabaseClient.auth.signUp({
+
+                    email: email,
+
+                    password: password,
+
+                    options: {
+
+                        data: {
+                            full_name: name
+                        },
+
+                        emailRedirectTo:
+                            window.location.origin +
+                            "/client-login.html"
+                    }
+
+                });
+
+
+            if (error) {
+
+                signupMessage.textContent =
+                    error.message;
+
+                return;
+            }
+
+
+            signupMessage.textContent =
+                "Account created! Please check your email to verify your account.";
+
+        });
+
+    </script>
+
+</body>
+</html>

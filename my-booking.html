@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AJP PIXELS | My Booking</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- =========================
+     NAVIGATION
+     ========================= -->
+
+<nav class="navbar">
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="services.html">Services</a>
+        <a href="events.html">Events</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="client-portal.html" class="client-nav-button">Client Portal</a>
+    </div>
+</nav>
+
+
+<!-- =========================
+     BOOKING HERO
+     ========================= -->
+
+<section class="booking-hero">
+
+    <div class="booking-hero-content">
+
+        <p class="booking-label">AJP PIXELS CLIENT PORTAL</p>
+
+        <h1>My Booking</h1>
+
+        <p>
+            View your photography booking information,
+            service details, and payment status.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     BOOKING INFORMATION
+     ========================= -->
+
+<section class="booking-section">
+
+    <div class="booking-container">
+
+        <div class="booking-header">
+
+            <p class="booking-section-label">
+                BOOKING INFORMATION
+            </p>
+
+            <h2>Your Photography Booking</h2>
+
+            <p>
+                Your confirmed booking information will appear here.
+            </p>
+
+        </div>
+
+
+        <!-- CLIENT INFORMATION -->
+
+        <div class="booking-card">
+
+    <h3>Client Information</h3>
+
+    <div class="booking-details">
+
+        <div class="booking-detail">
+            <span>Client Name</span>
+            <strong id="client-name">Loading...</strong>
+        </div>
+
+        <div class="booking-detail">
+            <span>Email</span>
+            <strong id="client-email">Loading...</strong>
+        </div>
+
+        <div class="booking-detail">
+            <span>Phone</span>
+            <strong id="client-phone">Loading...</strong>
+        </div>
+
+    </div>
+</div>
+
+        </div>
+
+
+       <!-- EVENT INFORMATION -->
+
+<div class="booking-card">
+
+    <h3>Event Information</h3>
+
+    <div class="booking-details">
+
+        <div class="booking-detail">
+            <span>Photography Service</span>
+            <strong id="event-type">Loading...</strong>
+        </div>
+
+        <div class="booking-detail">
+            <span>Event Date</span>
+            <strong id="event-date">Loading...</strong>
+        </div>
+
+        <div class="booking-detail">
+            <span>Event Location</span>
+            <strong id="event-location">Loading...</strong>
+        </div>
+
+        <div class="booking-detail">
+            <span>Package</span>
+            <strong id="package-name">Loading...</strong>
+        </div>
+
+        <div class="booking-detail">
+            <span>Booking Status</span>
+            <strong id="booking-status" class="booking-status">
+                Loading...
+            </strong>
+        </div>
+
+    </div>
+</div>
+
+        </div>
+
+
+        <!-- PAYMENT INFORMATION -->
+
+        <<div class="booking-card">
+
+    <h3>Payment Information</h3>
+
+    <div class="payment-summary">
+
+        <div class="payment-row">
+            <span>Total Amount</span>
+            <strong id="total-amount">Loading...</strong>
+        </div>
+
+        <div class="payment-row">
+            <span>Amount Paid</span>
+            <strong id="amount-paid" class="payment-paid">
+                Loading...
+            </strong>
+        </div>
+
+        <div class="payment-row">
+            <span>Remaining Balance</span>
+            <strong id="balance-due">Loading...</strong>
+        </div>
+
+        <div class="payment-row">
+            <span>Payment Status</span>
+            <strong id="payment-status">
+                Loading...
+            </strong>
+        </div>
+
+    <div class="booking-payment-button">
+
+    <a href="client-payment.html?booking_id=${booking.id}"
+       class="client-portal-button">
+        Make a Payment
+    </a>
+
+</div>
+
+</div>
+
+
+        <!-- ACTIONS -->
+
+        <div class="booking-actions">
+
+            <a href="client-portal.html"
+               class="booking-secondary-button">
+                Back to Client Portal
+            </a>
+
+            <a href="contact.html"
+               class="booking-secondary-button">
+                Contact AJP PIXELS
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+     ========================= -->
+
+<footer class="client-footer">
+
+    <div class="client-footer-content">
+
+        <h2>AJP PIXELS</h2>
+
+        <p>Photography for all occasions</p>
+
+        <div class="client-footer-links">
+
+            <a href="index.html">Home</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="services.html">Services</a>
+            <a href="events.html">Events</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+
+        </div>
+
+        <p class="client-footer-copy">
+            © 2026 AJP PIXELS. All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const SUPABASE_URL = "https://dqommzsokiqvopldkvrf.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_hnKFrgGzRCLgYVnXmo9yRg_ACmhlHfX";
+
+const supabaseClient = supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+);
+
+function showMoney(amount) {
+    return new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD"
+    }).format(Number(amount || 0));
+}
+
+function showDate(date) {
+    if (!date) return "Not provided";
+
+    return new Date(date + "T12:00:00").toLocaleDateString(
+        "en-US",
+        {
+            year: "numeric",
+            month: "long",
+            day: "numeric"
+        }
+    );
+}
+
+async function loadBooking() {
+    const { data: { user }, error: authError } =
+        await supabaseClient.auth.getUser();
+
+    if (authError || !user) {
+        window.location.href = "client-login.html";
+        return;
+    }
+
+    const { data: client, error: clientError } =
+        await supabaseClient
+            .from("clients")
+            .select("full_name, phone")
+            .eq("id", user.id)
+            .single();
+
+    if (clientError) {
+        console.error("Client information error:", clientError);
+        alert("Could not load your client information.");
+        return;
+    }
+
+    document.getElementById("client-name").textContent =
+        client.full_name || "Not provided";
+
+    document.getElementById("client-email").textContent =
+        user.email || "Not provided";
+
+    document.getElementById("client-phone").textContent =
+        client.phone || "Not provided";
+
+
+    const { data: booking, error: bookingError } =
+
+        await supabaseClient
+            .from("bookings")
+            .select("*")
+            .eq("client_id", user.id)
+            .order("created_at", { ascending: false })
+            .limit(1)
+            .maybeSingle();
+
+    if (bookingError) {
+        console.error("Booking error:", bookingError);
+        alert("Could not load your booking.");
+        return;
+    }
+
+    if (!booking) {
+        document.getElementById("event-type").textContent =
+            "No booking found";
+        document.getElementById("event-date").textContent = "—";
+        document.getElementById("event-location").textContent = "—";
+        document.getElementById("package-name").textContent = "—";
+        document.getElementById("booking-status").textContent =
+            "No booking";
+        document.getElementById("total-amount").textContent = "—";
+        document.getElementById("amount-paid").textContent = "—";
+        document.getElementById("balance-due").textContent = "—";
+        return;
+    }
+
+    document.getElementById("event-type").textContent =
+        booking.event_type || "Not provided";
+
+    document.getElementById("event-date").textContent =
+        showDate(booking.event_date);
+
+    document.getElementById("event-location").textContent =
+        booking.event_location || "Not provided";
+
+    document.getElementById("package-name").textContent =
+        booking.package_name || "Not provided";
+
+    document.getElementById("booking-status").textContent =
+        booking.booking_status || "Pending";
+
+    document.getElementById("total-amount").textContent =
+        showMoney(booking.total_amount);
+
+    document.getElementById("amount-paid").textContent =
+        showMoney(booking.amount_paid);
+
+    document.getElementById("balance-due").textContent =
+        showMoney(booking.balance_due);
+
+// Add booking ID to the payment link
+document.querySelector(".booking-payment-button a").href =
+    "client-payment.html?booking_id=" +
+    encodeURIComponent(booking.id);
+
+        // Payment Status
+document.getElementById("payment-status").textContent =
+    Number(booking.balance_due) <= 0
+        ? "Paid in Full"
+        : Number(booking.amount_paid) > 0
+            ? "Partially Paid"
+            : "Payment Due";
+}
+
+loadBooking();
+</script>
+
+
+</body>
+</html>

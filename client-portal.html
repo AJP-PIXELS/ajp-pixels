@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AJP PIXELS | Client Portal</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- =========================
+     NAVIGATION
+     ========================= -->
+
+<nav class="navbar">
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="services.html">Services</a>
+        <a href="events.html">Events</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </div>
+</nav>
+
+
+<!-- =========================
+     CLIENT PORTAL HERO
+     ========================= -->
+
+<section class="client-hero">
+
+    <div class="client-hero-content">
+
+        <p class="client-label">AJP PIXELS</p>
+
+        <h1 id="client-welcome">Client Portal</h1>
+
+        <p>
+            Welcome to your private AJP PIXELS client experience.
+            Manage your photography services, payments, and completed
+            photo packages from one convenient place.
+        </p>
+
+ <a href="#" id="sign-out-button" class="client-signout-button">
+    Sign Out
+ </a>
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PORTAL OPTIONS
+     ========================= -->
+
+<section class="client-portal-section">
+
+    <div class="client-section-header">
+
+        <p class="client-section-label">CLIENT SERVICES</p>
+
+        <h2>Your AJP PIXELS Experience</h2>
+
+        <p>
+            Manage your booking, payments, photography package,
+            and client documents from one convenient location.
+        </p>
+
+    </div>
+
+
+    <div class="client-portal-grid">
+
+
+        <!-- MY BOOKING -->
+
+        <div class="client-portal-card">
+
+            <div class="client-card-icon">
+                📅
+            </div>
+
+            <h3>My Booking</h3>
+
+            <p>
+                View your photography service, event date, package,
+                booking status, and payment information.
+            </p>
+
+            <a href="my-booking.html" class="client-portal-button">
+                View My Booking
+            </a>
+
+        </div>
+
+
+        <!-- PAYMENT -->
+
+        <div class="client-portal-card">
+
+            <div class="client-card-icon">
+                $
+            </div>
+
+            <h3>Make a Payment</h3>
+
+            <p>
+                Make a secure payment toward your booking retainer
+                or remaining photography balance.
+            </p>
+
+            <a href="client-payment.html" class="client-portal-button">
+                Pay My Invoice
+            </a>
+
+        </div>
+
+
+        <!-- PHOTOS -->
+
+        <div class="client-portal-card">
+
+            <div class="client-card-icon">
+                📷
+            </div>
+
+            <h3>Download My Photos</h3>
+
+            <p>
+                Access your private photography gallery and download
+                your completed photo package.
+            </p>
+
+            <a href="client-gallery.html" class="client-portal-button">
+                Access My Photos
+            </a>
+
+        </div>
+
+
+        <!-- DOCUMENTS -->
+
+        <div class="client-portal-card">
+
+            <div class="client-card-icon">
+                📄
+            </div>
+
+            <h3>My Documents</h3>
+
+            <p>
+                Access your booking agreement, invoices, receipts,
+                and other documents related to your photography service.
+            </p>
+
+            <a href="client-documents.html" class="client-portal-button">
+                View Documents
+            </a>
+
+        </div>
+
+
+        <!-- ASSISTANCE -->
+
+        <div class="client-portal-card">
+
+            <div class="client-card-icon">
+                ?
+            </div>
+
+            <h3>Need Assistance?</h3>
+
+            <p>
+                Have a question about your booking, payment,
+                photographs, or documents?
+            </p>
+
+            <a href="contact.html" class="client-portal-button">
+                Contact AJP PIXELS
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CLIENT INFORMATION
+     ========================= -->
+
+<section class="client-information">
+
+    <div class="client-information-content">
+
+        <h2>Your Privacy Matters</h2>
+
+        <p>
+            AJP PIXELS values the privacy and security of our clients.
+            Client photographs, documents, and payment information should
+            only be accessed through authorized client services.
+        </p>
+
+        <p>
+            Please do not share private gallery links, passwords, invoices,
+            or download links with unauthorized individuals.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CALL TO ACTION
+     ========================= -->
+
+<section class="client-cta">
+
+    <div class="client-cta-content">
+
+        <h2>Ready for Your Next Photography Experience?</h2>
+
+        <p>
+            Whether you're planning a wedding, graduation, event,
+            portrait session, or special celebration, AJP PIXELS
+            is ready to capture the moments that matter.
+        </p>
+
+        <a href="contact.html" class="client-cta-button">
+            Contact AJP PIXELS
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+     ========================= -->
+
+<footer class="client-footer">
+
+    <div class="client-footer-content">
+
+        <h2>AJP PIXELS</h2>
+
+        <p>Photography for all occasions</p>
+
+        <div class="client-footer-links">
+
+            <a href="index.html">Home</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="services.html">Services</a>
+            <a href="events.html">Events</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+
+        </div>
+
+        <p class="client-footer-copy">
+            © 2026 AJP PIXELS. All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+<!-- Supabase Authentication Check -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+    const SUPABASE_URL = "https://dqommzsokiqvopldkvrf.supabase.co";
+    const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_hnKFrgGzRCLgYVnXmo9yRg_ACmhlHfX";
+
+    const supabaseClient = supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
+
+
+    // CHECK IF CLIENT IS LOGGED IN
+
+async function checkClientLogin() {
+
+    const { data: { session } } =
+        await supabaseClient.auth.getSession();
+
+    if (!session) {
+        window.location.href = "client-login.html";
+        return;
+    }
+
+}
+
+checkClientLogin();
+
+async function loadClientName() {
+
+    const {
+        data: { user },
+        error: userError
+    } = await supabaseClient.auth.getUser();
+
+    if (userError || !user) {
+        window.location.href = "client-login.html";
+        return;
+    }
+
+    const { data: client, error: clientError } =
+        await supabaseClient
+            .from("clients")
+            .select("full_name")
+            .eq("id", user.id)
+            .single();
+
+    if (clientError) {
+        console.error("Could not load client:", clientError);
+        return;
+    }
+
+    const welcomeHeading =
+        document.getElementById("client-welcome");
+
+    if (welcomeHeading && client.full_name) {
+        welcomeHeading.textContent =
+            "Welcome, " + client.full_name;
+    }
+}
+
+loadClientName();
+
+
+// SIGN OUT
+
+const signOutButton =
+    document.getElementById("sign-out-button");
+
+if (signOutButton) {
+
+    signOutButton.addEventListener("click", async function(event) {
+
+        event.preventDefault();
+
+        const { error } =
+            await supabaseClient.auth.signOut();
+
+        if (error) {
+            alert("There was a problem signing out. Please try again.");
+            return;
+        }
+
+        window.location.href = "client-login.html";
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>

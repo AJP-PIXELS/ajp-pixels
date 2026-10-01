@@ -1,0 +1,358 @@
+:
+
+<!DOCTYPE html>
+<html lang="en">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AJP PIXELS | Client Payment</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<nav class="navbar">
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="services.html">Services</a>
+        <a href="events.html">Events</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="client-portal.html" class="client-nav-button">
+            Client Portal
+        </a>
+    </div>
+</nav>
+
+
+<!-- PAYMENT HERO -->
+
+<section class="payment-hero">
+
+    <div class="payment-hero-content">
+
+        <p class="payment-label">AJP PIXELS CLIENT PORTAL</p>
+
+        <h1>Make a Payment</h1>
+
+        <p>
+            Securely manage your AJP PIXELS photography
+            booking payments.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- PAYMENT SECTION -->
+
+<section class="payment-section">
+
+    <div class="payment-container">
+
+        <div class="payment-header">
+
+            <p class="payment-section-label">
+                CLIENT PAYMENT
+            </p>
+
+            <h2>Payment Information</h2>
+
+            <p>
+                Review your booking information and payment
+                balance before proceeding.
+            </p>
+
+        </div>
+
+
+        <!-- BOOKING SUMMARY -->
+
+        <div class="payment-card">
+
+            <h3>Booking Summary</h3>
+
+            <div class="payment-details">
+
+                <div class="payment-detail">
+                    <span>Client</span>
+                    <strong>Client Name</strong>
+                </div>
+
+                <div class="payment-detail">
+                    <span>Service</span>
+                    <strong>Photography Service</strong>
+                </div>
+
+                <div class="payment-detail">
+                    <span>Event Date</span>
+                    <strong>Event Date</strong>
+                </div>
+
+                <div class="payment-detail">
+                    <span>Invoice Number</span>
+                    <strong>AJP-2026-001</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+<!-- PAYMENT SUMMARY -->
+
+<div class="payment-card">
+    <h3>Balance Summary</h3>
+
+    <div class="balance-summary">
+
+        <div class="balance-row">
+            <span>Total Booking Amount</span>
+            <strong id="total-booking-amount">$0.00</strong>
+        </div>
+
+        <div class="balance-row">
+            <span>Booking Retainer</span>
+            <strong>25%</strong>
+        </div>
+
+        <div class="balance-row">
+            <span>Amount Paid</span>
+            <strong id="amount-paid">$0.00</strong>
+        </div>
+
+        <div class="balance-row balance-due">
+            <span>Remaining Balance</span>
+            <strong id="remaining-balance">$0.00</strong>
+        </div>
+
+    </div>
+</div>
+
+        <!-- PAYMENT AMOUNT -->
+
+        <div class="payment-card">
+
+            <h3>Payment Amount</h3>
+
+            <label for="payment-amount">
+                Enter Amount to Pay
+            </label>
+
+            <div class="payment-input-wrapper">
+
+                <span>$</span>
+
+                <input
+                    type="number"
+                    id="payment-amount"
+                    name="payment-amount"
+                    min="1"
+                    step="0.01"
+                    placeholder="0.00"
+                >
+
+            </div>
+
+            <p class="payment-note">
+                Your payment will be processed through a secure
+                payment provider.
+            </p>
+
+
+           <!-- PAYMENT BUTTON -->
+<div class="payment-button-container">
+    <button
+        type="button"
+        class="client-portal-button"
+        onclick="startStripeCheckout()">
+        Continue to Secure Payment
+    </button>
+</div>
+            <div
+                id="payment-message"
+                class="payment-message">
+
+                Secure online payment processing will be connected
+                to AJP PIXELS here.
+
+            </div>
+
+        </div>
+
+
+        <!-- SECURITY -->
+
+        <div class="payment-security">
+
+            <div class="security-icon">
+                🔒
+            </div>
+
+            <h3>Secure Payment</h3>
+
+            <p>
+                AJP PIXELS will use a trusted third-party payment
+                provider to process payments securely. Credit-card
+                information will not be stored on this website.
+            </p>
+
+        </div>
+
+
+        <!-- ACTIONS -->
+
+        <div class="payment-actions">
+
+            <a
+                href="client-portal.html"
+                class="booking-secondary-button">
+                Back to Client Portal
+            </a>
+
+            <a
+                href="contact.html"
+                class="booking-secondary-button">
+                Contact AJP PIXELS
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer class="client-footer">
+
+    <div class="client-footer-content">
+
+        <h2>AJP PIXELS</h2>
+
+        <p>Photography for all occasions</p>
+
+        <div class="client-footer-links">
+
+            <a href="index.html">Home</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="services.html">Services</a>
+            <a href="events.html">Events</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+
+        </div>
+
+        <p class="client-footer-copy">
+            © 2026 AJP PIXELS. All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+<script>
+const SUPABASE_URL = "https://dqommzsokiqvopldkvrf.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_hnKFrgGzRCLgYVnXmo9yRg_ACmhlHfX";
+
+const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+);
+
+async function startStripeCheckout() {
+    const message = document.getElementById("payment-message");
+
+    message.textContent = "Connecting to secure payment...";
+    message.style.display = "block";
+
+    try {
+        const { data: { session }, error: sessionError } =
+            await supabaseClient.auth.getSession();
+
+        if (sessionError || !session) {
+            throw new Error("Please log in to continue.");
+        }
+
+        const bookingId = new URLSearchParams(
+            window.location.search
+        ).get("booking_id");
+
+        if (!bookingId) {
+            throw new Error("Booking information is missing.");
+        }
+
+        const { data, error } = await supabaseClient.functions.invoke(
+            "create-checkout-session",
+            {
+                body: { booking_id: bookingId } }
+        );
+
+        if (error) {
+            throw error;
+        }
+
+        if (!data || !data.url) {
+            throw new Error("Could not create your payment session.");
+        }
+
+        window.location.href = data.url;
+
+    } catch (error) {
+        message.textContent =
+            error.message || "Unable to start payment. Please try again.";
+        message.style.display = "block";
+    }
+  
+}
+
+async function loadPaymentDetails() {
+    const bookingId = new URLSearchParams(
+        window.location.search
+    ).get("booking_id");
+
+    if (!bookingId) {
+        console.error("Booking ID is missing.");
+        return;
+    }
+
+    const { data: booking, error } = await supabaseClient
+        .from("bookings")
+        .select("total_amount, amount_paid, balance_due")
+        .eq("id", bookingId)
+        .single();
+
+    if (error) {
+        console.error("Could not load booking:", error);
+        return;
+    }
+
+    const money = amount =>
+        "$" + Number(amount || 0).toFixed(2);
+
+    document.getElementById("payment-amount").value =
+    Number(booking.balance_due).toFixed(2);    
+
+    document.getElementById("total-booking-amount")
+        .textContent = money(booking.total_amount);
+
+    document.getElementById("amount-paid")
+        .textContent = money(booking.amount_paid);
+
+    document.getElementById("remaining-balance")
+        .textContent = money(booking.balance_due);
+}
+
+loadPaymentDetails();
+</script>
+</body>
+</html>
+

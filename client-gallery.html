@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AJP PIXELS | My Photos</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- =========================
+     NAVIGATION
+     ========================= -->
+
+<nav class="navbar">
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="services.html">Services</a>
+        <a href="events.html">Events</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="client-portal.html" class="client-nav-button">
+            Client Portal
+        </a>
+    </div>
+</nav>
+
+
+<!-- =========================
+     GALLERY HERO
+     ========================= -->
+
+<section class="gallery-hero">
+
+    <div class="gallery-hero-content">
+
+        <p class="gallery-label">
+            AJP PIXELS CLIENT PORTAL
+        </p>
+
+        <h1>My Photos</h1>
+
+        <p>
+            Your photography gallery and completed photo package.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CLIENT GALLERY
+     ========================= -->
+
+<section class="client-gallery-section">
+
+    <div class="client-gallery-container">
+
+        <div class="client-gallery-header">
+
+            <p class="gallery-section-label">
+                PRIVATE CLIENT GALLERY
+            </p>
+
+            <h2>John & Sarah's Wedding</h2>
+
+            <p>
+                Wedding Photography • June 20, 2026
+            </p>
+
+        </div>
+
+
+        <!-- GALLERY INFORMATION -->
+
+        <div class="gallery-information">
+
+            <div>
+                <span>Gallery</span>
+                <strong>Wedding Collection</strong>
+            </div>
+
+            <div>
+                <span>Photos</span>
+                <strong>6 Preview Images</strong>
+            </div>
+
+            <div>
+                <span>Status</span>
+                <strong class="gallery-status">
+                    Ready
+                </strong>
+            </div>
+
+        </div>
+
+
+        <!-- DOWNLOAD ALL -->
+
+        <div class="download-all-container">
+
+            <button
+                type="button"
+                class="download-all-button"
+                onclick="showDownloadMessage()">
+
+                Download All Photos
+
+            </button>
+
+            <p id="download-message" class="download-message">
+                Your secure photo download system will be connected here.
+            </p>
+
+        </div>
+
+
+        <!-- PHOTO GRID -->
+
+        <div class="client-photo-grid">
+
+
+            <!-- PHOTO 1 -->
+
+            <div class="client-photo-card">
+
+                <div class="client-photo-image">
+
+                    <img
+                        src="images/_DSC0063m.JPG"
+                        alt="AJP PIXELS Wedding Photography">
+
+                    <span class="client-watermark">
+                        AJP PIXELS
+                    </span>
+
+                </div>
+
+                <div class="client-photo-info">
+
+                    <h3>Wedding Portrait</h3>
+
+                    <p>High-resolution photograph</p>
+
+                    <button
+                        type="button"
+                        class="photo-download-button"
+                        onclick="showPhotoMessage()">
+
+                        Download Photo
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PHOTO 2 -->
+
+            <div class="client-photo-card">
+
+                <div class="client-photo-image">
+
+                    <img
+                        src="images/IMG_1025.JPG"
+                        alt="AJP PIXELS Wedding Photography">
+
+                    <span class="client-watermark">
+                        AJP PIXELS
+                    </span>
+
+                </div>
+
+                <div class="client-photo-info">
+
+                    <h3>Wedding Celebration</h3>
+
+                    <p>High-resolution photograph</p>
+
+                    <button
+                        type="button"
+                        class="photo-download-button"
+                        onclick="showPhotoMessage()">
+
+                        Download Photo
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PHOTO 3 -->
+
+            <div class="client-photo-card">
+
+                <div class="client-photo-image">
+
+                    <img
+                        src="images/IMG_1043.JPG"
+                        alt="AJP PIXELS Wedding Photography">
+
+                    <span class="client-watermark">
+                        AJP PIXELS
+                    </span>
+
+                </div>
+
+                <div class="client-photo-info">
+
+                    <h3>Special Moment</h3>
+
+                    <p>High-resolution photograph</p>
+
+                    <button
+                        type="button"
+                        class="photo-download-button"
+                        onclick="showPhotoMessage()">
+
+                        Download Photo
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PHOTO 4 -->
+
+            <div class="client-photo-card">
+
+                <div class="client-photo-image">
+
+                    <img
+                        src="images/_DSC0299-2.jpg"
+                        alt="AJP PIXELS Photography">
+
+                    <span class="client-watermark">
+                        AJP PIXELS
+                    </span>
+
+                </div>
+
+                <div class="client-photo-info">
+
+                    <h3>Celebration</h3>
+
+                    <p>High-resolution photograph</p>
+
+                    <button
+                        type="button"
+                        class="photo-download-button"
+                        onclick="showPhotoMessage()">
+
+                        Download Photo
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PHOTO 5 -->
+
+            <div class="client-photo-card">
+
+                <div class="client-photo-image">
+
+                    <img
+                        src="images/_DSC0441-2.jpg"
+                        alt="AJP PIXELS Photography">
+
+                    <span class="client-watermark">
+                        AJP PIXELS
+                    </span>
+
+                </div>
+
+                <div class="client-photo-info">
+
+                    <h3>Family & Friends</h3>
+
+                    <p>High-resolution photograph</p>
+
+                    <button
+                        type="button"
+                        class="photo-download-button"
+                        onclick="showPhotoMessage()">
+
+                        Download Photo
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PHOTO 6 -->
+
+            <div class="client-photo-card">
+
+                <div class="client-photo-image">
+
+                    <img
+                        src="images/IMG_0104.jpg"
+                        alt="AJP PIXELS Event Photography">
+
+                    <span class="client-watermark">
+                        AJP PIXELS
+                    </span>
+
+                </div>
+
+                <div class="client-photo-info">
+
+                    <h3>Special Event</h3>
+
+                    <p>High-resolution photograph</p>
+
+                    <button
+                        type="button"
+                        class="photo-download-button"
+                        onclick="showPhotoMessage()">
+
+                        Download Photo
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- USAGE INFORMATION -->
+
+        <div class="gallery-policy">
+
+            <h3>Photo Usage & Copyright</h3>
+
+            <p>
+                Your photographs are provided for your personal use
+                according to the AJP PIXELS Photo Usage & Copyright Policy.
+                Please do not sell, redistribute, or commercially use
+                photographs without written permission.
+            </p>
+
+            <a href="copyright-policy.html">
+                View Photo Usage & Copyright Policy
+            </a>
+
+        </div>
+
+
+        <!-- ACTION BUTTONS -->
+
+        <div class="gallery-actions">
+
+            <a
+                href="client-portal.html"
+                class="booking-secondary-button">
+                Back to Client Portal
+            </a>
+
+            <a
+                href="contact.html"
+                class="booking-secondary-button">
+                Contact AJP PIXELS
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+     ========================= -->
+
+<footer class="client-footer">
+
+    <div class="client-footer-content">
+
+        <h2>AJP PIXELS</h2>
+
+        <p>Photography for all occasions</p>
+
+        <div class="client-footer-links">
+
+            <a href="index.html">Home</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="services.html">Services</a>
+            <a href="events.html">Events</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+
+        </div>
+
+        <p class="client-footer-copy">
+            © 2026 AJP PIXELS. All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================
+     GALLERY SCRIPT
+     ========================= -->
+
+<script>
+
+function showDownloadMessage() {
+
+    const message =
+        document.getElementById("download-message");
+
+    message.textContent =
+        "Secure download access will be connected to your private client gallery.";
+
+    message.style.display = "block";
+}
+
+
+function showPhotoMessage() {
+
+    alert(
+        "Individual photo downloads will be connected to the secure client gallery."
+    );
+
+}
+
+</script>
+
+</body>
+</html>

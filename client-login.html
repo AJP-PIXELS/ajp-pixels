@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Client Login | AJP PIXELS</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="services.html">Services</a>
+            <a href="events.html">Events</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+
+    <section class="client-login-hero">
+
+        <div class="client-login-container">
+
+            <p class="client-login-label">AJP PIXELS CLIENT AREA</p>
+
+            <h1>Client Login</h1>
+
+            <p>
+                Sign in to access your booking, payments,
+                documents, and private photography gallery.
+            </p>
+
+
+            <form id="login-form">
+
+                <div class="login-field">
+                    <label for="email">Email Address</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email address"
+                        required
+                    >
+                </div>
+
+
+                <div class="login-field">
+                    <label for="password">Password</label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter your password"
+                        required
+                    >
+                </div>
+
+
+                <button type="submit" class="login-button">
+                    Sign In
+                </button>
+
+            </form>
+
+
+            <div id="login-message" class="login-message"></div>
+
+
+            <div class="login-links">
+
+                <a href="client-signup.html">
+                    Create Client Account
+                </a>
+
+                <a href="forgot-password.html">
+                    Forgot Password?
+                </a>
+
+            </div>
+
+
+            <div class="login-back">
+
+                <a href="index.html">
+                    ← Back to AJP PIXELS
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+     <!-- Supabase -->
+      <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+const SUPABASE_URL = "https://dqommzsokiqvopldkvrf.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_hnKFrgGzRCLgYVnXmo9yRg_ACmhlHfX";
+
+async function checkClientLogin() {
+
+    const { data: { session } } =
+        await supabaseClient.auth.getSession();
+
+    if (!session) {
+        window.location.href = "client-login.html";
+        return;
+    }
+
+}
+
+checkClientLogin();
+
+const supabaseClient = supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+);
+
+const loginForm = document.getElementById("login-form");
+const loginMessage = document.getElementById("login-message");
+
+loginForm.addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+
+    loginMessage.textContent = "Signing in...";
+    loginMessage.style.display = "block";
+
+    const { data, error } =
+        await supabaseClient.auth.signInWithPassword({
+            email: email,
+            password: password
+        });
+
+    if (error) {
+        loginMessage.textContent = error.message;
+        return;
+    }
+
+    loginMessage.textContent = "Login successful!";
+
+    window.location.href = "client-portal.html";
+
+});
+
+</script>
+
+</body>
+
+
